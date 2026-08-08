@@ -38,4 +38,14 @@ function longerThan(entries, minutes) {
 }
 console.log(longerThan(entries, 30));
 
-// printSummary(entries);
+function printSummary(entries) {
+  let categoryTotals = minutesByCategory(entries);
+  let categoryNames = Object.keys(categoryTotals); 
+  for (const category of categoryNames) {
+    let categoryCount = entries.filter(entry => entry.category === category).length; 
+    console.log(`Total minutes for ${category}: ${categoryTotals[category]}, with ${categoryCount} entries.`);  
+  }
+    console.log(`Total minutes for all categories: ${totalMinutes(entries)}`);
+}
+
+printSummary(entries);
