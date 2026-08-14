@@ -48,4 +48,4 @@ function printSummary(entries) {
     console.log(`Total minutes for all categories: ${totalMinutes(entries)}`);
 }
 
-printSummary(entries);
+ entries.reduce((max, entry) => entry.minutes > max.minutes ? entry : max, entries[0]);
