@@ -9,6 +9,8 @@ const entries = [
   { time: "14:00", category: "deep-work", note: "log summarizer",    minutes: 75 },
   { time: "15:30", category: "meeting",   note: "1:1",               minutes: 30 },
 ];
+// time the script takes to run, in milliseconds
+console.time("log-summary");
 
 function totalMinutes(entries) {
   let total = 0;
@@ -49,3 +51,6 @@ function printSummary(entries) {
 }
 
  entries.reduce((max, entry) => entry.minutes > max.minutes ? entry : max, entries[0]);
+console.log("Longest entry:", entries.reduce((max, entry) => entry.minutes > max.minutes ? entry : max, entries[0]));
+
+console.timeEnd("log-summary");
