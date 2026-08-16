@@ -38,7 +38,7 @@ console.log(minutesByCategory(entries));
 function longerThan(entries, minutes) {
   return entries.filter(entry => entry.minutes > minutes);
 }
-console.log(longerThan(entries, 30));
+console.table(longerThan(entries, 30));
 
 function printSummary(entries) {
   let categoryTotals = minutesByCategory(entries);
