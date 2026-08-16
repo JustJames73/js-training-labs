@@ -8,6 +8,7 @@ const entries = [
   { time: "13:00", category: "admin",     note: "email swamp",       minutes: 35 },
   { time: "14:00", category: "deep-work", note: "log summarizer",    minutes: 75 },
   { time: "15:30", category: "meeting",   note: "1:1",               minutes: 30 },
+  { time: "16:00", category:  "0", note: "log summarizer",    minutes: 60 },
 ];
 // time the script takes to run, in milliseconds
 console.time("log-summary");
@@ -54,3 +55,19 @@ function printSummary(entries) {
 console.log("Longest entry:", entries.reduce((max, entry) => entry.minutes > max.minutes ? entry : max, entries[0]));
 
 console.timeEnd("log-summary");
+
+const badEntries = {
+  uselessKey: "useless value",
+
+  badMethod(badEntries) {
+    try {
+      badEntries.forEach(function(entry) {
+        // this method tries to access a non-existent property on each entry, which will throw an error. Let's see what happens:
+        console.log(`${this.uselessKey}: has ${entry.id}`);
+      }); 
+    } catch (error) {
+      console.error(`An error occurred while processing the entries: ${error.message}`);
+    }
+  }
+};
+badEntries.badMethod(badEntries);
